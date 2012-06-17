@@ -40,7 +40,6 @@ class App_Controller_Base extends Zend_Controller_Action
                 exit;
             }
         }
-    var_dump($this->_userId, $user);exit;
     $this->view->rating = (int)$user->rating;
     $this->view->app_id = App_Vkontakte::getAppID();
     $referer = isset($_SERVER['HTTP_REFERER'])?pathinfo($_SERVER['HTTP_REFERER']):'';
