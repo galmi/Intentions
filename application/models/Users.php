@@ -9,11 +9,11 @@ class Model_Users extends App_Model_Base
 
 	protected static $_requirements = array(
 		'uid' => 'Validator:Int',
-		'friends' => 'Validator:Array',
+		'friends' => 'Array',
 		//'friends' => 'DocumentSet',
 		//'friends.$' =>  array('Document:Users', 'AsReference'),
-		'wants' => 'Validator:Array',
-		'done' =>'Validator:Array',
+		'wants' => 'Array',
+		'done' =>'Array',
 		//'feeds' => '',
 		'wants_count' => array('Required', 'Validator:Int')
 	);

@@ -5,7 +5,7 @@ class Model_Tasks extends App_Model_Base
 
 	protected static $_requirements = array(
 		'name' => 'Required',
-		'params' => 'Validator:Array',
+		'params' => 'Array',
 	);
 
   public static function add($name, $params) {
