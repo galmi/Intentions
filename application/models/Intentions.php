@@ -29,6 +29,7 @@ class Model_Intentions extends App_Model_Base
 			}
 		}
 		shuffle($tags);
+        var_dump($tags);
 		return $tags;
 	}
 
@@ -187,6 +188,7 @@ class Model_Intentions extends App_Model_Base
 
 	public static  function updateTags(){
 		$query=self::all(array( 'tags' => array( '$exists' => false )), array('description' => 1) )->limit(40);
+        var_dump($query);
 		foreach($query as $row){
 			$intentions = self::find($row->_id);
 			$intentions->tags = self::getTags($row->description);
