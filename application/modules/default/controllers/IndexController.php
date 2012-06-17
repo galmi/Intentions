@@ -11,7 +11,6 @@ class IndexController extends App_Controller_Base
 
 	public function indexAction()
 	{
-    print_r($this->_getAllParams());exit;
 //    $this->view->feed = Zend_Json::encode(Model_Feeds::get($this->_userId,1));
         $this->view->bannerv = Model_Users::getBannerv();
 	}

@@ -25,6 +25,7 @@ class App_Controller_Base extends Zend_Controller_Action
 			$session->write($viewer_id);
 			$this->_userId = $viewer_id;
             $user = Model_Users::find($viewer_id);
+      print_r($user);exit;
 			if (!$user) {
 				$user = Model_Users::getInstance();
 				$user->uid = $viewer_id;
