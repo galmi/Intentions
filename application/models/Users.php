@@ -12,8 +12,8 @@ class Model_Users extends App_Model_Base
 		'friends' => 'Array',
 		//'friends' => 'DocumentSet',
 		//'friends.$' =>  array('Document:Users', 'AsReference'),
-		'wants' => 'Array',
-		'done' =>'Array',
+//		'wants' => 'Array',
+//		'done' =>'Array',
 		//'feeds' => '',
 		'wants_count' => array('Required', 'Validator:Int')
 	);
