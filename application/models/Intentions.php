@@ -7,8 +7,8 @@ class Model_Intentions extends App_Model_Base
 		//'id' => array('Required', 'Validator:Int'),
 		'description' => 'Required',
 		//'tags' => '',
-		'wants' => 'Array',
-		'done' => 'Array'
+		'wants' => 'Validator:Array',
+		'done' => 'Validator:Array'
 	);
 
     /**
