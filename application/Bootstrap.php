@@ -74,8 +74,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			'master' => array(
 				'host' => $mongodb['host'],
 				'port' => $mongodb['port'],
-//				'username' => $mongodb['username'],
-//				'password' => $mongodb['password']
+				'username' => $mongodb['username'],
+				'password' => $mongodb['password']
 			)
 		);
 		Shanty_Mongo::addConnections($connections);
