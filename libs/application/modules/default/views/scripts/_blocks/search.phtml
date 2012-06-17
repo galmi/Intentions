@@ -1,0 +1,24 @@
+<div id="search">
+	<input type="text" name="search" id="s_search" class="fl_l" placeholder="Поиск желания"/>
+</div>
+
+<script type="text/javascript" async>
+  $(document).ready(function(){
+    $("#s_search").autocomplete({serviceUrl:'/index/autocomplete', deferRequestBy:0, minChars:2,onSelect: function(value, data){ document.location.href = '/intention/view/' + data }});
+
+    if ($.browser.msie) {
+      var def = "Поиск желания";
+      $("#s_search").val(def);
+      $("#s_search").focus(function(){
+        if ($(this).val()==def) {
+          $(this).val('');
+        }
+      });
+      $("#s_search").blur(function(){
+        if ($(this).val()=='') {
+          $(this).val(def);
+        }
+      })
+    }
+  })
+</script>

@@ -1,0 +1,29 @@
+<div id="iwant" class="clear_fix summary_wrap">
+	<div class="module_header">
+		Сообщение
+	</div>
+	<div class="gray_block">
+		<input type="text" name="iwant" id="s_iwant" placeholder="Добавить в рассылку"/>
+
+		<div class="fl_r button_blue button_wide" id="send">
+			<button onclick="document.location = '/index/notificationinit?notification=' + encodeURIComponent($.trim($('#s_iwant').val()));">Отправить</button>
+		</div>
+		<div class="clear_fix"></div>
+	</div>
+	<div id="add_intention" style="display:none">
+		<div class="triangle_outer">
+			<div class="triangle_inner"></div>
+		</div>
+		<div class="gray_block fl_l">
+			<div class="checkbox" onclick="$(this).toggleClass('on')"></div>
+			<a onclick="$(this).parent().children('.checkbox').toggleClass('on')">Я уже сделал это</a>
+		</div>
+		<div class="clear_fix"></div>
+		<div class="mt8">
+			<div class="fl_l button_blue button_wide">
+				<button onclick="document.location = '/intention/search?query=' + encodeURIComponent($.trim($('#s_iwant').val()));">Сохранить</button>
+			</div>
+			<a class="fl_r cancel" onclick="Common.cancelIntention()">Отменить</a>
+		</div>
+	</div>
+</div>

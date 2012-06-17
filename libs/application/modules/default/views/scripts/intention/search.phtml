@@ -1,0 +1,57 @@
+<?php echo $this->partial('_blocks/menu.phtml');?>
+<div class="clear_fix"></div>
+<div id="main">
+
+<div class="clear_fix"></div>
+
+	<div class="summary_wrap clear_fix news_top">
+		<?php if (isset($this->intentions) && $this->intentions /*&& $this->intentions->count()*/): ?>
+			<div class="module_header">
+				Похожие желаня
+			</div>
+			<div class="my_block gray_block">
+				<div class="clear_fix"></div>
+				<div class="list">
+
+						<?php foreach($this->intentions as $row): ?>
+							<?php
+							if(isset($this->userWants) && is_array($this->userWants) && in_array($row->_id->__toString(),$this->userWants)){
+								$onWants=' on';
+							}else{
+								$onWants='';
+							}
+							if(isset($this->userDone) && is_array($this->userDone) && in_array($row->_id->__toString(),$this->userDone)){
+								$onDone=' on';
+							}else{
+								$onDone='';
+							}
+							?>
+							<div class="my_row">
+								<a data-id="<?php echo $row->_id->__toString();?>" class="news_header">
+									<?php echo $row->description;?>
+								</a>
+							</div>
+							<?php endforeach;?>
+
+				</div>
+			</div>
+		<?php endif;?>
+		<div class="clear_fix"></div>
+		<div class="module_header">
+			Свое желание
+		</div>
+		<div class="my_block gray_block">
+			<p class="fl_l" style="font-size: medium; font-weight: bold;">"<?php echo $this->query ?>"</p>
+			<div class="button_blue fl_r button_wide" id="send" query="<?php echo $this->query ?>">
+				<button onclick="Common.saveIntention()">Добавить свое</button>
+			</div>
+			<div class="clear_fix"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		Common.searchGo();
+	});
+</script>

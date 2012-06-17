@@ -1,0 +1,147 @@
+<?php echo $this->partial('_blocks/menu.phtml');?>
+<div class="clear_fix"></div>
+<?php //echo $this->partial('_blocks/search.phtml');?>
+<!--<div class="clear_fix"></div>-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.colors div').click(function(){
+            var el = $(this);
+            var bg = el.css('background-color');
+            el.parent().parent().find('p a').css('background-color', bg);
+            $("#color").val(bg);
+            $('.colors').slideToggle(500);
+        });
+    });
+</script>
+<div id="main">
+	<div id="intention" class="mt8 clear_fix summary_wrap">
+        <div class="super" style="display:none;">
+            <div class="variant">
+                <h4>Прокачать желание</h4>
+                <div class="fl_l">
+                    <input type="hidden" id="color"/>
+                    <input type="hidden" id="intention_id" value="<?php echo $this->id;?>" />
+                    <p class="color"><a onclick="$('.colors').slideToggle(500)">Выбери цвет</a></p>
+                    <div class="colors" style="display:none;position:absolute;">
+                        <div style="background-color:#87ceeb;">Голубой</div>
+                        <div style="background-color:#adff2f;">Зеленый</div>
+                        <div style="background-color:#fcf992;">Желтый</div>
+                        <div style="background-color:#ffd700;">Золотой</div>
+                        <div style="background-color:orange;">Оранжевый</div>
+                        <div style="background-color:#ffc0cb;">Розовый</div>
+                        <div style="background-color:#ee82ee;">Фиолетовый</div>
+                    </div>
+                </div>
+                <div class="fl_l create"><a onclick="Common.sendColor()" id="a_create">Создать</a></div>
+                <div class="fl_l cancel"><a onclick="Common.closeColor()">Отмена</a></div>
+                <div class="clear_fix"></div>
+                <p>* С баланса приложения будет списан 1 голос.</p>
+            </div>
+            <div class="bg"></div>
+        </div>
+		<h4>
+			<div class="fl_l">
+				<?php echo $this->intentionName ?>
+			</div>
+            <div class="fl_r">
+                <a onclick="Common.showColor()" title="Прокачай желание, пусть его увидят все в течение суток на первой странице!!!">Прокачать желание</a>
+            </div>
+		</h4>
+		<div id="iWants_checkbox" class="gray_block fl_l click task<?php echo $this->iWants ?>" data-id="<?php echo $this->id;?>" style="margin-top:8px">
+			<div class="checkbox<?php echo $this->iWants ?>" data-id="<?php echo $this->id;?>"></div>
+			Я тоже хочу
+		</div>
+		<div id="iDone_checkbox" class="gray_block fl_l click task<?php echo $this->iDone ?>" data-id="<?php echo $this->id;?>" style="margin-left: 16px;margin-top:8px">
+			<div class="checkbox<?php echo $this->iDone ?>" data-id="<?php echo $this->id;?>"></div>
+			Я уже сделал
+		</div>
+    <div class="fl_l" style="margin-left:16px;clear:none;width:180px;height:22px;margin-top:12px;">
+      <div id="vk_like"></div>
+    </div>
+		<div class="clear_fix"></div>
+	</div>
+
+	<div class="clear_fix"></div>
+
+	<div id="wants" class="mt8">
+		<div class="module_header">
+			Они тоже хотят <a id="wants_count" class="fl_r" onclick="$('#wants_list').toggle();"><?php echo $this->iWants_count ?></a>
+		</div>
+		<div id="wants_photo" class="gray_block ava_list">
+		</div>
+		<div id="wants_list" style="display: none; visibility:<?php if($this->iWants_count == 0){echo "hidden";} ?>">
+			<div class="triangle_outer">
+				<div class="triangle_inner"></div>
+			</div>
+			<div class="users_list">
+				<ul id="wants_li">
+					<?php
+					if(isset($this->WantsUsers)){
+						foreach($this->WantsUsers as $uid){
+							?>
+							<li id="<?php echo $uid ?>">
+							</li>
+							<?php
+						}
+					}
+					?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="done" class="mt8">
+		<div class="module_header">
+			Они уже сделали <a id="done_count" class="fl_r" onclick="$('#done_list').toggle();"><?php echo $this->iDone_count ?></a>
+		</div>
+		<div id="done_photo" class="gray_block ava_list">
+		</div>
+		<div id="done_list" style="display: none; visibility:<?php if($this->iDone_count == 0){echo "hidden";} ?>">
+			<div class="triangle_outer">
+				<div class="triangle_inner"></div>
+			</div>
+			<div class="users_list">
+				<ul id="done_li">
+					<?php
+					if(isset($this->DoneUsers)){
+						foreach($this->DoneUsers as $uid){
+							?>
+							<li id="<?php echo $uid ?>">
+							</li>
+							<?php
+						}
+					}
+					?>
+				</ul>
+			</div>
+		</div>
+	</div>
+  <div id="author" class="mt8">
+    <div class="module_header">
+			Автор
+		</div>
+     <div class="author gray_block ava_list" uid="<?php echo $this->author ?>"></div>
+  </div>
+	<div class="clear_fix"></div>
+	<div id="vk_comments"></div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		windowHeight = $('html').height();
+		Common.checkboxes();
+		VK.init(function (data) {
+			Common.intentionViewUsers();
+			Common.intentionViewUid('intentionAuthor');
+            VK.Widgets.Comments("vk_comments", {limit: 5, width: "590", attach: "*", pageUrl:'<?php echo $_SERVER["SERVER_NAME"].'/intention/view/'.$this->id; ?>', onChange:addComment});
+            VK.Widgets.Like("vk_like", {pageUrl:'<?php echo $_SERVER["SERVER_NAME"].'/intention/view/'.$this->id; ?>', text:'Мне понравилось желание "<?php echo htmlspecialchars($this->intentionName);?>"'});
+		});
+	})
+    function addComment(){
+        <?php
+            if ($this->author != $this->userId){
+        ?>
+        Common.changeComment('<?php echo $this->id;?>');
+        <?php
+        }
+        ?>
+    }
+</script>

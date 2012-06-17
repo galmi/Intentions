@@ -1,0 +1,88 @@
+<?php echo $this->partial('_blocks/menu.phtml', array('my'=>1));?>
+<div class="clear_fix"></div>
+<?php //echo $this->partial('_blocks/search.phtml');?>
+<!--<div class="clear_fix"></div>-->
+<div id="main">
+  <?php echo $this->partial('_blocks/iwant.phtml');?>
+
+  <div class="summary_wrap clear_fix news_top">
+    <div class="module_header">Мои желания</div>
+    <div id="my">
+      <div class="my_block gray_block">
+        <div id="sub_menu" class="fl_r">
+          <a class="selected" data-filter="all">Все</a>
+          <span class="divider">|</span>
+          <a data-filter="wants">Я хочу</a>
+          <span class="divider">|</span>
+          <a data-filter="done">Я сделал</a>
+        </div>
+        <div class="clear_fix"></div>
+        <div class="loading"></div>
+        <div class="list">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.checkbox').live('click', function(){
+      var elem = $(this);
+      var id = elem.attr('data-id');
+      if (elem.hasClass('on')) {
+        var done = 0;
+      } else {
+        var done = 1;
+      }
+      $.post('/intention/done/'+id, {done:done}, function(data){
+        if (data==true){
+          if (done===0) {
+            elem.removeClass('on');
+            $('.my_row[data-id='+id+'] .news_header').removeClass('on');
+            $("#my_wants_list").append($('.my_row[data-id='+id+']'));
+          } else {
+            elem.addClass('on');
+            $('.my_row[data-id='+id+'] .news_header').addClass('on');
+            $("#my_done_list").append($('.my_row[data-id='+id+']'));
+          }
+        }
+      }, 'json');
+    });
+
+    $('.delete').live('click', function(){
+      var id = $(this).attr('data-id');
+      $.post('/intention/remove/'+id, function(data){
+        if (data==true){
+          $('.my_row[data-id='+id+']').remove();
+        }
+      },'json');
+    });
+
+    $("#sub_menu a").click(function(){
+      var elem = $(this);
+      var filter = elem.attr('data-filter');
+      if (filter=='wants') {
+        $("#my_wants_list").show();
+        $("#my_done_list").hide();
+      } else if(filter=='done') {
+        $("#my_wants_list").hide();
+        $("#my_done_list").show();
+      } else {
+        $("#my_wants_list").show();
+        $("#my_done_list").show();
+      }
+      $("#sub_menu a").removeClass('selected');
+      elem.addClass("selected");
+    });
+
+    $('a[data-filter=all]').click();
+    $.post('/intention/my',{filter:'all'},function(data){
+      if (data) {
+        $('.loading').hide();
+        $('.list').html(data);
+      }
+    },'html');
+  });
+</script>

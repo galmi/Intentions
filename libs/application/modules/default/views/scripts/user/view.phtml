@@ -1,0 +1,67 @@
+<?php echo $this->partial('_blocks/menu.phtml');?>
+<div class="clear_fix"></div>
+	<?php echo $this->partial('_blocks/iwant.phtml');?>
+<div class="clear_fix"></div>
+<div id="main">
+
+    <div class="rating"><span>Рейтинг</span><h2><?php echo $this->rating;?></h2></div>
+	<div id="user" uid="<?php echo $this->uid ?>" class="mt8">
+	</div>
+	<?php if($this->authors):?>
+	<button class="fl_r" onclick="Common.setModerator()">модератор</button>
+	<?php endif;?>
+	<div class="clear_fix"></div>
+
+	<div class="summary_wrap clear_fix news_top">
+		<div class="module_header">Желания пользователя</div>
+		<div id="my">
+			<div class="my_block gray_block">
+				<div id="sub_menu" class="fl_r">
+					<a class="selected" data-filter="all">Все</a>
+					<span class="divider">|</span>
+					<a data-filter="wants">Хочет</a>
+					<span class="divider">|</span>
+					<a data-filter="done">Выполнил</a>
+				</div>
+				<div class="clear_fix"></div>
+				<div class="loading"></div>
+				<div class="list">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear_fix"></div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		Common.intentionViewUid('userFriend');
+		$("#sub_menu a").click(function(){
+			var elem = $(this);
+			var filter = elem.attr('data-filter');
+			if (filter=='wants') {
+				$("#my_wants_list").show();
+				$("#my_done_list").hide();
+			} else if(filter=='done') {
+				$("#my_wants_list").hide();
+				$("#my_done_list").show();
+			} else {
+				$("#my_wants_list").show();
+				$("#my_done_list").show();
+			}
+			$("#sub_menu a").removeClass('selected');
+			elem.addClass("selected");
+		});
+
+		$('a[data-filter=all]').click();
+		var uid = $('#user').attr('uid');
+		$.post('/user/my',{filter:'all', uid:uid},function(data){
+			if (data) {
+				$('.loading').hide();
+				$('.list').html(data);
+				Common.checkboxesFriend();
+			}
+		},'html');
+	});
+</script>

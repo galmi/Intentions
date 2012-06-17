@@ -1,0 +1,19 @@
+<?php echo $this->partial('_blocks/menu.phtml', array('tenderpage'=>1));?>
+<?php if($this->authorsCheck): ?>
+<a href="/index/notification" class="fl_r">Рассылка</a>
+<?php endif; ?>
+<div class="clear_fix"></div>
+<div id="main">
+	<div class="module_header">Конкурс</div>
+	<div class="text">Расскажи свою историю как ты проводишь время с новыми друзьями или с любимым человеком.<br/>Набери больше всех лайков за историю, ПОЛУЧИ ПОДАРОК.</div>
+
+  <div class="clear_fix"></div>
+	<div id="vk_comments"></div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		Common.intentionViewUid('Author');
+	})
+  VK.Widgets.Comments("vk_comments", {limit: 5, width: "590", attach: "*", pageUrl:'<?php echo $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>'});
+</script>

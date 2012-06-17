@@ -1,0 +1,35 @@
+<div id="my_wants_list">
+<?php if (isset($this->intentions['wants']) && $this->intentions['wants']): ?>
+  <?php foreach($this->intentions['wants'] as $row): ?>
+    <div class="my_row" data-id="<?php echo $row->_id->__toString();?>">
+      <a onclick="Common.url('/intention/view/<?php echo $row->_id->__toString();?>')" class="news_header">
+        <?php echo $row->description;?>
+      </a>
+      <div class="fl_r">
+        <div class="checkbox" data-id="<?php echo $row->_id->__toString();?>"></div>
+        <div class="delete" data-id="<?php echo $row->_id->__toString();?>"></div>
+      </div>
+    </div>
+  <?php endforeach;?>
+<?php endif;?>
+</div>
+
+<div id="my_done_list">
+<?php if (isset($this->intentions['done']) && $this->intentions['done']): ?>
+  <?php foreach($this->intentions['done'] as $row): ?>
+    <div class="my_row" data-id="<?php echo $row->_id->__toString();?>">
+      <a onclick="Common.url('/intention/view/<?php echo $row->_id->__toString();?>')" class="news_header on">
+        <?php echo $row->description;?>
+      </a>
+      <div class="fl_r">
+        <div class="checkbox on" data-id="<?php echo $row->_id->__toString();?>"></div>
+        <div class="delete" data-id="<?php echo $row->_id->__toString();?>"></div>
+      </div>
+    </div>
+  <?php endforeach;?>
+<?php endif;?>
+</div>
+  
+<?php if ((!isset($this->intentions['wants']) || !$this->intentions['wants']) && (!isset($this->intentions['done']) || !$this->intentions['done'])):?>
+  <p>Ничего не найдено</p>
+<?php endif;?>

@@ -1,0 +1,13 @@
+<div id="menu">
+	<a onclick="Common.url('/')" <?php echo ($this->main)? 'class="selected"':'';?>>Главная</a>
+	<span class="divider">|</span>
+	<a onclick="Common.url('/intention/my')" <?php echo ($this->my)? 'class="selected"':'';?>>Мои желания</a>
+	<span class="divider">|</span>
+	<a onclick="Common.url('/user/rating')" <?php echo ($this->ratingpage)? 'class="selected"':'';?>>Таблица рейтингов</a>
+	<span class="divider">|</span>
+	<a onclick="Common.url('/intention/tender')" <?php echo ($this->tenderpage)? 'class="selected"':'';?>>Конкурс</a>
+
+	<a class="fl_r" onclick="Common.url('/index/authors')" <?php echo ($this->my)? 'class="selected"':'';?>>Авторы</a>
+  <span class="divider fl_r">|</span>
+  <a href="http://vkontakte.ru/club33871234" target="_blank" class="fl_r">Наша группа</a>
+</div>

@@ -1,0 +1,73 @@
+<div id="my_wants_list">
+<?php if (isset($this->intentions['wants']) && $this->intentions['wants']): ?>
+  <?php foreach($this->intentions['wants'] as $row): ?>
+		<?php
+		if(isset($this->userWants) && is_array($this->userWants) && in_array($row->_id->__toString(),$this->userWants)){
+			$onWants=' on';
+		}else{
+			$onWants='';
+		}
+		if(isset($this->userDone) && is_array($this->userDone) && in_array($row->_id->__toString(),$this->userDone)){
+			$onDone=' on';
+		}else{
+			$onDone='';
+		}
+		?>
+    <div class="my_row" data-id="<?php echo $row->_id->__toString();?>">
+      <a onclick="Common.url('/intention/view/<?php echo $row->_id->__toString();?>')" class="news_header">
+        <?php echo $row->description;?>
+      </a>
+      <div class="fl_r">
+	      <div done style="float:right; width: 68px;" class="click task<?php echo $onDone ?>" data-id="<?php echo $row->_id->__toString();?>">
+		      <div class="checkbox<?php echo $onDone ?>" data-id="<?php echo $row->_id->__toString();?>"></div>
+		      cделал
+	      </div>
+	      <span style="float:right;" class="divider">|</span>
+	      <div wants style="float:right; width: 50px;" class="click task<?php echo $onWants ?>" data-id="<?php echo $row->_id->__toString();?>">
+		      <div class="checkbox<?php echo $onWants ?>" data-id="<?php echo $row->_id->__toString();?>"></div>
+		      хочу
+	      </div>
+      </div>
+    </div>
+  <?php endforeach;?>
+<?php endif;?>
+</div>
+
+<div id="my_done_list">
+<?php if (isset($this->intentions['done']) && $this->intentions['done']): ?>
+  <?php foreach($this->intentions['done'] as $row): ?>
+		<?php
+		if(isset($this->userWants) && is_array($this->userWants) && in_array($row->_id->__toString(),$this->userWants)){
+			$onWants=' on';
+		}else{
+			$onWants='';
+		}
+		if(isset($this->userDone) && is_array($this->userDone) && in_array($row->_id->__toString(),$this->userDone)){
+			$onDone=' on';
+		}else{
+			$onDone='';
+		}
+		?>
+    <div class="my_row" data-id="<?php echo $row->_id->__toString();?>">
+      <a onclick="Common.url('/intention/view/<?php echo $row->_id->__toString();?>')" class="news_header on">
+        <?php echo $row->description;?>
+      </a>
+      <div class="fl_r">
+	      <div done style="float:right; width: 68px;" class="click task<?php echo $onDone ?>" data-id="<?php echo $row->_id->__toString();?>">
+		      <div class="checkbox<?php echo $onDone ?>" data-id="<?php echo $row->_id->__toString();?>"></div>
+		      cделал
+	      </div>
+	      <span style="float:right;" class="divider">|</span>
+	      <div wants style="float:right; width: 50px;" class="click task<?php echo $onWants ?>" data-id="<?php echo $row->_id->__toString();?>">
+		      <div class="checkbox<?php echo $onWants ?>" data-id="<?php echo $row->_id->__toString();?>"></div>
+		      хочу
+	      </div>
+      </div>
+    </div>
+  <?php endforeach;?>
+<?php endif;?>
+</div>
+  
+<?php if ((!isset($this->intentions['wants']) || !$this->intentions['wants']) && (!isset($this->intentions['done']) || !$this->intentions['done'])):?>
+  <p>Ничего не найдено</p>
+<?php endif;?>

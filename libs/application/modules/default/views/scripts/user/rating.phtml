@@ -1,0 +1,16 @@
+<?php echo $this->partial('_blocks/menu.phtml', array('ratingpage'=>true));?>
+<div class="clear_fix"></div>
+<div id="main">
+	<div class="module_header">Лидеры по рейтингу</div>
+    <?php foreach($this->users as $row):?>
+	<div class="clear_fix"></div>
+    <div class="rating" style=""><span>Рейтинг</span><h2><?php echo (int)$row->rating;?></h2></div>
+	<div uid="<?php echo $row->uid;?>" class="mt8">
+	</div>
+    <?php endforeach;?>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		Common.ratingViewUid();
+	})
+</script>

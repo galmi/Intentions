@@ -1,0 +1,56 @@
+<div id="iwant" class="clear_fix summary_wrap">
+  <div class="module_header">
+    Я хочу ...
+  </div>
+  <div class="gray_block">
+    <input type="text" name="iwant" id="s_iwant" placeholder="Добавить желание"/>
+
+    <div class="fl_r button_blue button_wide" id="send">
+      <button onclick="document.location = '/intention/search?query=' + encodeURIComponent($.trim($('#s_iwant').val()));">Отправить</button>
+    </div>
+    <div class="clear_fix"></div>
+      <?php echo Model_Users::getBannerh();?>
+  </div>
+  <div id="add_intention" style="display:none">
+    <div class="triangle_outer">
+      <div class="triangle_inner"></div>
+    </div>
+    <div class="gray_block fl_l">
+        <div class="checkbox" onclick="$(this).toggleClass('on')"></div>
+        <a onclick="$(this).parent().children('.checkbox').toggleClass('on')">Я уже сделал это</a>
+    </div>
+    <div class="clear_fix"></div>
+    <div class="mt8">
+      <div class="fl_l button_blue button_wide">
+        <button onclick="document.location = '/intention/search?query=' + encodeURIComponent($.trim($('#s_iwant').val()));">Сохранить</button>
+      </div>
+      <a class="fl_r cancel" onclick="Common.cancelIntention()">Отменить</a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" async>
+  $(document).ready(function(){
+    $("#s_iwant").autocomplete({serviceUrl:'/index/autocomplete', deferRequestBy:0, minChars:2,onSelect: function(value, data){ document.location.href = '/intention/view/' + data }, hasAdd:false});
+    $("#s_iwant").keypress(function(event){
+        var key = event.keyCode || event.which;
+        if (key==13){
+            $("#send button").click();
+        }
+    });
+    if ($.browser.msie) {
+      var def_want = "Добавить желание";
+      $("#s_iwant").val(def_want);
+      $("#s_iwant").focus(function(){
+        if ($(this).val()==def_want) {
+          $(this).val('');
+        }
+      });
+      $("#s_iwant").blur(function(){
+        if ($(this).val()=='') {
+          $(this).val(def_want);
+        }
+      })
+    }
+  })
+</script>

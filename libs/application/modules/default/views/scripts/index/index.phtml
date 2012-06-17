@@ -1,0 +1,76 @@
+<?php echo $this->partial('_blocks/menu.phtml', array('main'=>1));?>
+  <div class="clear_fix"></div>
+<?php //echo $this->partial('_blocks/search.phtml');?>
+<!--  <div class="clear_fix"></div>-->
+  <div id="main">
+
+    <?php echo $this->partial('_blocks/iwant.phtml');?>
+    
+    <div id="main_left">
+
+      <div class="summary_wrap clear_fix news_top">
+        <div class="module_header">
+          Желания
+        </div>
+        <div class="clear_fix"></div>
+      </div>
+      <div id="my" class="mt8">
+        <div id="sub_menu" class="fl_r">
+          <a data-filter="my">Моя лента</a>
+          <span class="divider">|</span>
+          <a data-filter="new" class="selected">Новые желания</a>
+<!--          <span class="divider">|</span>-->
+<!--          <a data-filter="done">Популярные</a>-->
+        </div>
+        <div class="clear_fix"></div>
+    </div>
+      <div id="news">
+        
+      </div>
+      <div id="show_more">
+        <a>Еще</a>
+      </div>
+
+    </div>
+    <div id="main_right">
+      <div id="tender">
+        <?php echo $this->bannerv;?><br/>
+        <div class="module_header">ВНИМАНИЕ КОНКУРС</div>
+        <div class="text">
+          <ul style="padding-left:20px">
+            <li><a onclick="Common.animateHighlight($('#anketa'))">Зарегистрируйся на сайте</a></li>
+            <li>Найти друзей или любимого человека</li>
+            <li><a onclick="Common.url('/intention/tender')">Расскажи нам об этом</a></li>
+            <li>Получай лайки</li>
+          </ul>
+          За лучшие истории обязательно будет подарок.
+        </div>
+      </div>
+        <div id="rating">
+            <div class="module_header">Ваш рейтинг</div>
+            <h2><?php echo $this->rating;?></h2>
+        </div>
+
+      <div id="friends" class="clear_fix summary_wrap">
+        <div class="module_header">
+          Друзья
+          <a class="fl_r" onclick='VK.callMethod("showInviteBox");'>Пригласить</a>
+        </div>
+        <div id="friendcount" class="p_header_bottom">
+        </div>
+	    <div id="ajax_friendsapp" class="module_body clear_fix">
+            <div class="clear_fix"></div>
+	    </div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" async>
+	VK.init(function (data) {
+        Common.initObserver();
+		Common.getAppFriends(<?php echo $this->userId;?>);
+		Common.getFriendsAppUserProfile();
+    Feed.init('<?php echo $this->server_name;?>');
+	});
+
+</script>

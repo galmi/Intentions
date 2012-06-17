@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru" xml:lang="ru">
+<head>
+  <title>Мир желаний</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="Мир желаний"/>
+  <meta name="title" content="Мир желаний"/>
+  <script src="http://vkontakte.ru/js/api/xd_connection.js?2" type="text/javascript"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="/js/Common.js?1"></script>
+  <script type="text/javascript" src="/js/Feed.js?1"></script>
+  <link href="/style.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body <?php if ($this->color):?> style="background-color: <?php echo $this->color;?>"<?php endif;?>>
+<div id="header">
+
+</div>
+<div class="clear_fix"></div>
+<div id="content">
+<?php echo $this->layout()->content; ?>
+</div>
+<div class="clear_fix"></div>
+<div id="footer">
+
+</div>
+<div class="clear_fix"></div>
+<script type="text/javascript" async>
+  function setCookie (name, value, expires, path, domain, secure) {
+    document.cookie = name + "=" + escape(value) +
+      ((expires) ? "; expires=" + expires : "") +
+      ((path) ? "; path=" + path : "") +
+      ((domain) ? "; domain=" + domain : "") +
+      ((secure) ? "; secure" : "");
+  }
+
+  if (self.parent.frames.length == 0 && '<?php echo $this->referer;?>') {
+    setCookie('redirect', document.location.href, new Date(), '/');
+    document.location.href = '<?php echo $this->referer;?>/app<?php echo $this->app_id;?>';
+  }
+  var windowHeight = 0;
+  Common.profileuser["uid"] = <?php echo $this->userId;?>;
+  VK.init(function(data) {
+    $(document).ready(function() {
+      setInterval(function(){
+        var height = $('body').height() + 15;
+        var width = $('html').width();
+        if (height<500) {
+          height = 500;
+        }
+        if (height != windowHeight && height>=500) {
+          VK.callMethod("resizeWindow", width, height);
+          windowHeight = height;
+        }
+      }, 500);
+    })
+  });
+</script>
+</body>
+</html>
