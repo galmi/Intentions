@@ -121,6 +121,7 @@ class Shanty_Mongo
 		
 		// Attempt to create requirement
 		if (!$requirement = static::createRequirement($name, $options)) {
+      return false;
 			require_once 'Shanty/Mongo/Exception.php';
 			throw new Shanty_Mongo_Exception("No requirement exists for '{$name}'");
 		}
