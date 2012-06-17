@@ -4,7 +4,7 @@ class Model_Notification extends App_Model_Base
     protected static $_collection = 'notification';
 
 	protected static $_requirements = array(
-		'uids' => 'Array',
+		'uids' => 'Validator:Array',
 		'params' => 'Required',
 	);
 
