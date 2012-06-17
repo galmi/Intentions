@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wget -qO https://intentions-galmi.rhcloud.com/index/calcrating > /dev/null
