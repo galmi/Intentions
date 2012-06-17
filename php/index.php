@@ -16,7 +16,7 @@ switch ($host) {
 	case 'gdx.ruby.galmi.ru':
 		$env = 'gdx';
 		break;
-	case 'ildar.ruby.galmi.ru':
+	case 'intentions-galmi.rhcloud.com':
 		$env = 'ildar';
 		break;
 	default:
