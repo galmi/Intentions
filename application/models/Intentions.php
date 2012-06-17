@@ -190,6 +190,7 @@ class Model_Intentions extends App_Model_Base
 		$query=self::all(array( 'tags' => array( '$exists' => false )))->limit(40);
         var_dump($query);
 		foreach($query as $row){
+            echo '123456789';
 			$intentions = self::find($row->_id);
 			$intentions->tags = self::getTags($row->description);
 			$intentions->save();
