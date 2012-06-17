@@ -95,6 +95,7 @@ class IndexController extends App_Controller_Base
 	}
 	public function gettagsAction() {
 		Model_Intentions::updateTags();
+        echo "done";
 		exit;
 	}
 
