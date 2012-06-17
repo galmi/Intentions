@@ -17,10 +17,8 @@ class App_Controller_Base extends Zend_Controller_Action
 		$auth = Zend_Auth::getInstance();
 		if ($auth->hasIdentity()) {
 			$this->_userId = $auth->getIdentity();
-      echo "if 1";
 		}
 		elseif (App_Vkontakte::checkAuthKey($this->_getAllParams())) {
-      echo "if 2";
 			Zend_Session::rememberMe(1209600);
 			$session = $auth->getStorage();
 			$viewer_id = $this->_getParam('viewer_id');
