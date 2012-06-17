@@ -317,16 +317,16 @@ abstract class Shanty_Mongo_Collection
 	 * @param array $fields
 	 * @return Shanty_Mongo_Document
 	 */
-	public static function ($id, array $fields = array())
-	{
-		if (!($id instanceof MongoId)) {
-			$id = new MongoId($id);
-		}
-		
-		$query = array('_id' => $id);
-		
-		return static::one($query, $fields);
-	}
+//	public static function ($id, array $fields = array())
+//	{
+//		if (!($id instanceof MongoId)) {
+//			$id = new MongoId($id);
+//		}
+//
+//		$query = array('_id' => $id);
+//
+//		return static::one($query, $fields);
+//	}
 	
 	/**
 	 * Find one document
