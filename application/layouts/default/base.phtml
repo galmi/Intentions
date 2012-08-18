@@ -13,30 +13,6 @@
   <link href="/style.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 <body <?php if ($this->color):?> style="background-color: <?php echo $this->color;?>"<?php endif;?>>
-
-<!-- Creara media реклама -->
-<div id='cmBannerBlock'></div>
-<script src="http://img.creara-media.ru/js/v3/cmblockvk.js"></script>
-<script type="text/javascript">
-   var cmBlock;
-   VK.init( function () {
-      cmBlock = new CMBlockVK;
-      cmBlock.setupPreroll( 18149, {} );
-   });
-
-   function cmPreloadCloseCallback() {
-      initCmBlock();
-   }
-   function cmPreloadNoAdvCallback() {
-      initCmBlock();
-   }
-   function initCmBlock() {
-      cmBlock.setupBlock( 'cmBannerBlock', 18149, {} );
-   }
-
-</script>
-<!-- Creara media реклама -->
-
 <div id="header">
 
 </div>
