@@ -17,6 +17,7 @@ class App_Controller_Base extends Zend_Controller_Action
 		$auth = Zend_Auth::getInstance();
 		if ($auth->hasIdentity()) {
 			$this->_userId = $auth->getIdentity();
+      $user = Model_Users::find($this->_userId);
 		}
 		elseif (App_Vkontakte::checkAuthKey($this->_getAllParams())) {
 			Zend_Session::rememberMe(1209600);
@@ -32,6 +33,8 @@ class App_Controller_Base extends Zend_Controller_Action
 				$user->save();
 			}
 		}
+    $user->ts = time();
+    $user->save();
 		$viewer_id = $this->_getParam('viewer_id');
 //		Zend_Debug::dump(Model_Users::find($viewer_id));
         if (!isset($user)) {
