@@ -143,11 +143,14 @@ class IndexController extends App_Controller_Base
    */
   public function comebackAction() {
     $time = mktime(date('H'), date('i'), date('s'), date('n'), date('j')-7, date('Y'));
-    $users = Model_Users::all(array('ts'=>array('$lt' => $time)), array('ts'))->limit(50);
+    $users = Model_Users::all(array('ts'=>array('$lt' => $time)), array('uid','ts'))->limit(5);
     $uids = array();
+    $currentTime = time();
     if ($users) {
       foreach($users as $user) {
         $uids[] = $user->ts;
+        $user->ts = $currentTime;
+        $user->save();
       }
       echo implode(',', $uids);
 //      if ($uids) {
@@ -156,6 +159,7 @@ class IndexController extends App_Controller_Base
 //        ));
 //      }
     }
+    echo $currentTime;
     echo 'ok';
     exit;
   }
