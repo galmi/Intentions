@@ -149,6 +149,7 @@ class IndexController extends App_Controller_Base
     if ($users) {
       foreach($users as $user) {
         $uids[] = $user->ts;
+        $user = Model_Users::find($user->uid, array('ts'));
         $user->ts = $currentTime;
         $user->save();
       }
