@@ -143,7 +143,7 @@ class IndexController extends App_Controller_Base
    */
   public function comebackAction() {
     $time = mktime(date('H'), date('i'), date('s'), date('n'), date('j')-7, date('Y'));
-    $users = Model_Users::all(array('ts'=>$time), array('ts'))->limit(50);
+    $users = Model_Users::all(array('ts'=>array('$lt' => $time)), array('ts'))->limit(50);
     $uids = array();
     if ($users) {
       foreach($users as $user) {
