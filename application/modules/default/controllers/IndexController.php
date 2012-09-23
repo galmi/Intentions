@@ -147,7 +147,7 @@ class IndexController extends App_Controller_Base
     $uids = array();
     if ($users) {
       foreach($users as $user) {
-        $uids[] = $users->ts;
+        $uids[] = $user->ts;
       }
       echo implode(',', $uids);
 //      if ($uids) {
