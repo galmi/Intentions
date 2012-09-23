@@ -138,5 +138,25 @@ class IndexController extends App_Controller_Base
       exit;
   }
 
+  /*
+   * Уведомление старым юзерам что надо вернуться
+   */
+  public function comebackAction() {
+    $time = mktime(date('H'), date('i'), date('s'), date('n'), date('j')-7, date('Y'));
+    $users = Model_Users::all(array('ts'=>$time), array('ts'))->limit(50);
+    $uids = array();
+    if ($users) {
+      foreach($users as $user) {
+        $uids[] = $users->ts;
+      }
+      echo implode(',', $uids);
+//      if ($uids) {
+//        Model_Tasks::add('comeback', array(
+//          'uids' => implode(',', $uids)
+//        ));
+//      }
+    }
+    exit;
+  }
 }
 
