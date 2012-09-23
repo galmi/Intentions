@@ -156,6 +156,7 @@ class IndexController extends App_Controller_Base
 //        ));
 //      }
     }
+    echo 'ok';
     exit;
   }
 }
