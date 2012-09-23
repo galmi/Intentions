@@ -14,6 +14,9 @@ class App_Controller_Base extends Zend_Controller_Action
 
 	public function init()
 	{
+    if ($this->_getParam('controller')=='index' && in_array($this->_getParam('action'), array('comeback', 'gettags', 'task', 'calcrating'))) {
+      return;
+    }
 		$auth = Zend_Auth::getInstance();
 		if ($auth->hasIdentity()) {
 			$this->_userId = $auth->getIdentity();

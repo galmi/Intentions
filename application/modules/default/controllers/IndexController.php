@@ -148,7 +148,7 @@ class IndexController extends App_Controller_Base
     $currentTime = time();
     if ($users) {
       foreach($users as $user) {
-        $uids[] = $user->ts;
+        $uids[] = $user->uid;
         $user = Model_Users::find((string)$user->uid);
         $user->ts = $currentTime;
         $user->save();
