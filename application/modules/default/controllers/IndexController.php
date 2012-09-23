@@ -153,15 +153,12 @@ class IndexController extends App_Controller_Base
         $user->ts = $currentTime;
         $user->save();
       }
-      echo implode(',', $uids);
-//      if ($uids) {
-//        Model_Tasks::add('comeback', array(
-//          'uids' => implode(',', $uids)
-//        ));
-//      }
+      if ($uids) {
+        Model_Tasks::add('comeback', array(
+          'uids' => implode(',', $uids)
+        ));
+      }
     }
-    echo $currentTime;
-    echo 'ok';
     exit;
   }
 }

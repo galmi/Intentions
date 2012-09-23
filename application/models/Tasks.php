@@ -88,6 +88,14 @@ class Model_Tasks extends App_Model_Base
               App_Vkontakte::api('http://api.vkontakte.ru/api.php', 'secure.sendNotification', $data);
               sleep(1);
           }
+//Напомнить вернуться в приложение
+      } elseif($name=='comeback') {
+        $data = array(
+          'uids' => $params['uids'],
+          'message' => 'Возвращайся, тебя ждут новые желания, друзья и конкурс на голоса!'
+        );
+        App_Vkontakte::api('http://api.vkontakte.ru/api.php', 'secure.sendNotification', $data);
+        sleep(1);
       }
       self::remove(array('_id'=>$task->_id));
     }
