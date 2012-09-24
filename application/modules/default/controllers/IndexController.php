@@ -148,10 +148,12 @@ class IndexController extends App_Controller_Base
     $currentTime = time();
     if ($users) {
       foreach($users as $user) {
-        $uids[] = $user->uid;
-        $user = Model_Users::find((string)$user->uid);
-        $user->ts = $currentTime;
-        $user->save();
+        $user = Model_Users::find($user->uid);
+        if ($user) {
+          $user->ts = $currentTime;
+          $user->save();
+          $uids[] = $user->uid;
+        }
       }
       if ($uids) {
         Model_Tasks::add('comeback', array(
