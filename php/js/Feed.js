@@ -78,7 +78,7 @@ var Feed = {
     '<div class="news_block gray_block" '+color+'>' +
     '<div style="float:right;"><div id="vk_like_' + data.intention_id + '" class="like" data-id="'+data.intention_id+'"></div></div>' +
     '  <span class="news_header">'+
-    '    <a onclick="Common.url(\'/intention/view/' + data.intention_id + '\')">' + data.description + '</a>' +
+    '    <a onclick="Common.url(\'/intention/view/' + data.intention_id + '\')">' + data.description.replace("'","") + '</a>' +
     '  </span>' +
     '  <div class="news_user">' +
     '    <table border="0" cellpadding="0" cellspacing="0">' +
