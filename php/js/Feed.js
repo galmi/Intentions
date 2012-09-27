@@ -23,7 +23,7 @@ var Feed = {
             var rowData = {
               uid: val.friend,
               intention_id: val.intention_id,
-              description: val.description,
+              description: val.description.replace("'",""),
               avatar: friends[val.friend].photo_rec,
               first_name: friends[val.friend].first_name,
               last_name: friends[val.friend].last_name,
