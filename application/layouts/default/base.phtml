@@ -48,9 +48,9 @@
       ((secure) ? "; secure" : "");
   }
 
-  if (self.parent.frames.length == 0 && '<?php echo $this->referer;?>') {
+  if (self.parent.frames.length == 0) {
     setCookie('redirect', document.location.href, new Date(), '/');
-    document.location.href = '<?php echo $this->referer;?>/app<?php echo $this->app_id;?>';
+    document.location.href = 'http://vk.com/app<?php echo $this->app_id;?>';
   }
   var windowHeight = 0;
   Common.profileuser["uid"] = <?php echo $this->userId;?>;
