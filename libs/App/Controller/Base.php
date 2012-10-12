@@ -36,7 +36,7 @@ class App_Controller_Base extends Zend_Controller_Action
 				$user->save();
 			}
 		}
-    if (!is_null($user)) {
+    if (isset($user) && !is_null($user)) {
         $user->ts = time();
         $user->save();
     }
