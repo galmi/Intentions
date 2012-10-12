@@ -11,6 +11,7 @@ defined('APPLICATION_PATH')
 $host = $_SERVER['HTTP_HOST'];
 switch ($host) {
 	case 'int.moisocialki.ru':
+	case 'moisocialki.ru':
 		$env = 'production';
 		break;
 	case 'gdx.ruby.galmi.ru':
