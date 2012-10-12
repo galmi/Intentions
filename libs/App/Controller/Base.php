@@ -36,8 +36,10 @@ class App_Controller_Base extends Zend_Controller_Action
 				$user->save();
 			}
 		}
-    $user->ts = time();
-    $user->save();
+    if (!is_null($user)) {
+        $user->ts = time();
+        $user->save();
+    }
 		$viewer_id = $this->_getParam('viewer_id');
 //		Zend_Debug::dump(Model_Users::find($viewer_id));
         if (!isset($user)) {
