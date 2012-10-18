@@ -53,7 +53,9 @@
     document.location.href = 'http://vk.com/app<?php echo $this->app_id;?>';
   }
   var windowHeight = 0;
+  <?php if ($this->userId){ ?>
   Common.profileuser["uid"] = <?php echo $this->userId;?>;
+  <?php } ?>
   VK.init(function(data) {
     $(document).ready(function() {
       setInterval(function(){
