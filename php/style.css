@@ -195,6 +195,7 @@ td {
 
 #main_right {
   float: right;
+  width:200px;
 }
 
 .clear_fix {
