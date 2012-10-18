@@ -49,9 +49,6 @@
       </div>
       <div id="vote">
           <div id="vk_poll"></div>
-          <script type="text/javascript">
-          VK.Widgets.Poll("vk_poll", {width: "200"}, "55827034_0786722f27409ff985");
-          </script>
       </div>
         <div id="rating">
             <div class="module_header">Ваш рейтинг</div>
@@ -78,6 +75,7 @@
 		Common.getAppFriends(<?php echo $this->userId;?>);
 		Common.getFriendsAppUserProfile();
     Feed.init('<?php echo $this->server_name;?>');
+      VK.Widgets.Poll("vk_poll", {width: "200"}, "55827243_acb58cf3a5cb9c65d4");
 	});
 
 </script>
