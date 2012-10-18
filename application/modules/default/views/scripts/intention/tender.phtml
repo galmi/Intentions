@@ -20,6 +20,8 @@
       </p>
   </div>
   <div class="clear_fix"></div>
+    <div id="vk_poll"></div>
+
 	<div id="vk_comments"></div>
 </div>
 
@@ -28,4 +30,5 @@
 		Common.intentionViewUid('Author');
 	})
   VK.Widgets.Comments("vk_comments", {limit: 5, width: "590", attach: "*", pageUrl:'<?php echo $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>'});
+  VK.Widgets.Poll("vk_poll", {width: "500"}, "55827243_acb58cf3a5cb9c65d4");
 </script>
