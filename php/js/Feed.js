@@ -81,7 +81,7 @@ var Feed = {
     var row =
     '<div class="news_block gray_block" '+color+'>';
     if (this.admin) {
-        row += '<a onclick=Feed.del("'+data.intention_id+'", $(this).parent())>Удалить</a>';
+        row += '<a onclick="Feed.del(\''+data.intention_id+'\', this)">Удалить</a>';
     }
     row +=
     '<div style="float:right;"><div id="vk_like_' + data.intention_id + '" class="like" data-id="'+data.intention_id+'"></div></div>' +
@@ -113,6 +113,7 @@ var Feed = {
   },
 
   del: function(id, el) {
+      var el = $(el).parent();
       $.get('/intention/delete/'+id, function(data){
           if (data.success) {
               el.remove();
