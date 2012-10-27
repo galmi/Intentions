@@ -379,14 +379,16 @@ class IntentionController extends App_Controller_Base
 
     public function deleteAction()
     {
+        $result = array('success'=>false,'message'=>'Ошибка');
         if ($this->view->admin) {
             $id=$this->_getParam('id');
             $intention=Model_Intentions::find($id);
             if ($intention) {
                 $intention->delete();
+                $result = array('success'=>true,'message'=>'OK');
             }
         }
-        $this->_redirect('/');
+        $this->_helper->json($result);
     }
 }
 

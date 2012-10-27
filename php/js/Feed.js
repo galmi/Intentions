@@ -81,7 +81,7 @@ var Feed = {
     var row =
     '<div class="news_block gray_block" '+color+'>';
     if (this.admin) {
-        row += '<a href="/intention/delete/'+data.intention_id+'">Удалить</a>';
+        row += '<a onclick=Feed.del("'+data.intention_id+'", $(this).parent())>Удалить</a>';
     }
     row +=
     '<div style="float:right;"><div id="vk_like_' + data.intention_id + '" class="like" data-id="'+data.intention_id+'"></div></div>' +
@@ -110,5 +110,15 @@ var Feed = {
         var row = row + '<script type="text/javascript">VK.Widgets.Like("vk_like_'+data.intention_id+'", {type:"mini", pageUrl:"'+Feed.server+'/intention/view/'+data.intention_id+'", text:\'Мне понравилось желание "'+data.description+'"\'});</script>';
     }
     return row;
+  },
+
+  del: function(id, el) {
+      $.get('/intention/delete/'+id, function(data){
+          if (data.success) {
+              el.remove();
+          } else {
+            alert(data.message);
+          }
+      },'json');
   }
 }
