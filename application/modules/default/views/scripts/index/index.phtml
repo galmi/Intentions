@@ -70,7 +70,7 @@
         Common.initObserver();
 		Common.getAppFriends(<?php echo $this->userId;?>);
 		Common.getFriendsAppUserProfile();
-    Feed.init('<?php echo $this->server_name;?>');
+        Feed.init('<?php echo $this->server_name;?>', <?= $this->admin?1:0; ?>);
 	});
 
 </script>

@@ -2,14 +2,18 @@ var Feed = {
   page : 1,
   type : 'new',
   server: '',
+  admin: false,
 
-  init: function(server) {
+  init: function(server, admin) {
     var uids = [];
     var html = '';
     var friends = {};
     if (server) {
         this.server = server;
       }
+    if (admin) {
+        this.admin = admin;
+    }
     $.post('/index/feed',{page:Feed.page, type: Feed.type}, function(data){
       if (data.length){
         $.each(data, function(key, val){
@@ -75,7 +79,11 @@ var Feed = {
         var color = '';
     }
     var row =
-    '<div class="news_block gray_block" '+color+'>' +
+    '<div class="news_block gray_block" '+color+'>';
+    if (this.admin) {
+        row += '<a href="/intention/delete/'+data.intention_id+'">Удалить</a>';
+    }
+    row +=
     '<div style="float:right;"><div id="vk_like_' + data.intention_id + '" class="like" data-id="'+data.intention_id+'"></div></div>' +
     '  <span class="news_header">'+
     '    <a onclick="Common.url(\'/intention/view/' + data.intention_id + '\')">' + data.description.replace("'","") + '</a>' +

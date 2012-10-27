@@ -377,5 +377,16 @@ class IntentionController extends App_Controller_Base
     $this->view->tenderpage = 1;
   }
 
+    public function deleteAction()
+    {
+        if ($this->view->admin) {
+            $id=$this->_getParam('id');
+            $intention=Model_Intentions::find($id);
+            if ($intention) {
+                $intention->delete();
+            }
+        }
+        $this->_redirect('/');
+    }
 }
 
