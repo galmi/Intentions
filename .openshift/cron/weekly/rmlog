@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm ~/php-5.3/logs/access_log-*
+rm ~/php-5.3/logs/error_log-*
+rm ~/mongodb-2.2/log/mongodb.log.*
