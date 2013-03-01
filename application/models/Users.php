@@ -264,7 +264,7 @@ class Model_Users extends App_Model_Base
 //                    s17.addParam("flashVars","ref_id=371153883%26gender=m");
 //                    s17.write("bannerv");
 //                    </script>';
-        $banners[] = '<form name="anketa" method="post" action="http://fotostrana.ru/?ref_id=371153883" target="_blank" style="margin-left:0px;width: 200px;text-align: center;background: #F0F8FF;">
+        $banners[] = '<form name="anketa" method="post" action="http://cl.cpaevent.ru/51308f647355383e1c000004/" target="_blank" style="margin-left:0px;width: 200px;text-align: center;background: #F0F8FF;">
 <table style="background: #F0F8FF;"  id="anketa">
  <tbody><tr>
   <td class="text">Я</td>
