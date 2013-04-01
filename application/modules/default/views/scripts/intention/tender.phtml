@@ -11,8 +11,7 @@
       <p><b>Новые правила:</b>
       <ul style="margin-top:0;margin-bottom:0;">
       <li>Расскажи свою историю как ты проводишь время с новыми друзьями или с любимым человеком.<br/>ПОЛУЧИ В ПОДАРОК ГОЛОСА.</li>
-      <li>Каждое воскресенье человек, написавший историю и набравший за неделю наибольшее количество лайков, ГАРАНТИРОВАНО получает голоса.</li>
-      <li>В начале каждого месяца история, которая понравится авторам, также будет награждена голосами.</li>
+      <li>За каждые полные 100 лайков вашей истории вы ГАРАНТИРОВАНО получает по 1 голосу.</li>
       </ul>
       <p>Помоги развитию приложения: <a onclick='VK.callMethod("showInviteBox");'>Пригласи друзей</a>,
           <a href="http://cl.cpaevent.ru/51308f647355383e1c000004/" target="_blank">Найди новых друзей</a> или просто <b>кликни по баннеру вверху</b>.<br/>
@@ -20,7 +19,7 @@
       </p>
   </div>
   <div class="clear_fix"></div>
-    <div id="vk_poll"></div>
+<!--    <div id="vk_poll"></div>-->
 
 	<div id="vk_comments"></div>
 </div>
@@ -30,5 +29,5 @@
 		Common.intentionViewUid('Author');
 	})
   VK.Widgets.Comments("vk_comments", {limit: 5, width: "590", attach: "*", pageUrl:'<?php echo $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]; ?>'});
-  VK.Widgets.Poll("vk_poll", {width: "590"}, "55827243_acb58cf3a5cb9c65d4");
+//  VK.Widgets.Poll("vk_poll", {width: "590"}, "55827243_acb58cf3a5cb9c65d4");
 </script>
