@@ -7,7 +7,8 @@
   <div class="clear_fix"></div>
   <?php echo Model_Users::getBannerh();?>
 	<div class="module_header">Конкурс</div>
-	<div class="text">
+  <div class="text">
+    <div style="width: 380px;float: left;">
       <p><b>Новые правила:</b>
       <ul style="margin-top:0;margin-bottom:0;">
       <li>Расскажи свою историю как ты проводишь время с новыми друзьями или с любимым человеком. ПОЛУЧИ В ПОДАРОК ГОЛОСА.</li>
@@ -15,11 +16,52 @@
       <li><b>Пишем <a href="http://vk.com/galmi" target="_blank">мне</a> когда набрали нужное количество голосов.</b> На мое усмотрение некоторые истории могут быть не приняты и голоса не отправлены.</li>
       <li>За сообщения типа "поставьте лайк отвечу тем же" и другие сообщения, не относящиеся к условию конкурса, буду добавлять в черный список. </li>
       </ul>
-      <p>Помоги развитию приложения: <a onclick='VK.callMethod("showInviteBox");'>Пригласи друзей</a>,
-          <a href="http://cl.cpaevent.ru/51308f647355383e1c000004/" target="_blank">Найди новых друзей</a> или просто <b>кликни по баннеру вверху</b>.<br/>
+      <p>Помоги развитию приложения: <a onclick='VK.callMethod("showInviteBox");'>Пригласи друзей</a> или просто <b>кликни по баннеру вверху</b>.<br/>
       </p>
-  </div>
-  <div class="clear_fix"></div>
+    </div>
+    <div id="tender" style="
+    float: right;
+">
+      <form name="anketa" method="post" action="http://cl.cpaevent.ru/51308f647355383e1c000004/" target="_blank" style="margin-left:0px;width: 200px;text-align: center;background: #F0F8FF;">
+        <table style="background: #F0F8FF;" id="anketa">
+          <tbody><tr>
+            <td class="text">Я</td>
+            <td>
+              <select name="sex" class="input_box">
+                <option value="1">Парень</option>
+                <option value="2" selected="">Девушка</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">Ищу</td>
+            <td>
+              <select name="ssex" class="input_box">
+                <option value="1">Парня</option>
+                <option value="2">Девушку</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="text">
+              в возрасте
+              от <input name="bage" type="text" class="input_box" size="3" maxlength="2" value="19">
+              до <input name="tage" type="text" class="input_box" size="3" maxlength="2" value="27">
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="text">
+              <input type="submit" value="Найти">
+            </td>
+          </tr>
+
+          </tbody></table>
+      </form><br>
+    </div>
+  </div>  <div class="clear_fix"></div>
 <!--    <div id="vk_poll"></div>-->
 
 	<div id="vk_comments"></div>
