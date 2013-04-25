@@ -71,7 +71,7 @@ class Model_Stories extends App_Model_Base
             }
             $result[] = array(
                 'id' => $row->_id->__toString(),
-                'story' => $row->story,
+                'story' => nl2br($row->story),
                 'author' => $row->author,
                 'value' => $value,
                 'vote' => $vote,
