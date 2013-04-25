@@ -656,7 +656,7 @@ var Common = {
       if (response.success==true) {
         var data = response.data;
         var result = '<div class="fl_l news_header value">' +
-          '<span class="value">'+Feed.values[data.value]+'</span></div>'+
+          '<span class="value">'+FeedBelieve.values[data.value]+'</span></div>'+
           '<p><span class="news_header">Верят: '+data.believe_count+'</span><br/>'+'<span class="news_header">Не верят: '+data.not_believe_count+'</span>';
         prnt.html(result);
       }
