@@ -1,0 +1,47 @@
+<div id="mystory" class="clear_fix summary_wrap">
+    <div class="module_header">
+        Добавь свою историю и узнай: поверят тебе другие или нет.
+    </div>
+    <div class="gray_block">
+        <input type="text" name="mystory" id="s_story" placeholder="Добавить историю"/>
+        <div class="fl_r button_blue button_wide" id="send" style="width:86px;height:25px;">
+            <button onclick="Common.addStory('#s_story', this)">Отправить</button>
+            <img src="/images/upload.gif" style="display:none;margin-top:8px;" />
+        </div>
+        <div class="clear_fix"></div>
+        <div style="width:268px;padding-left:100px;padding-right:100px;">
+            <div class="fl_l gray_block"><div class="mystory checkbox" data-value="believe"></div>Правда</div>
+            <div class="fl_r gray_block"><div class="mystory checkbox" data-value="not_believe"></div>Ложь</div>
+        </div>
+        <div class="clear_fix"></div>
+    </div>
+</div>
+
+<script type="text/javascript" async>
+    $(document).ready(function(){
+        $("#s_story").keypress(function(event){
+            var key = event.keyCode || event.which;
+            if (key==13){
+                $("#send button").click();
+            }
+        });
+        if ($.browser.msie) {
+            var def_story = "Добавить историю";
+            $("#s_story").val(def_story);
+            $("#s_story").focus(function(){
+                if ($(this).val()==def_story) {
+                    $(this).val('');
+                }
+            });
+            $("#s_story").blur(function(){
+                if ($(this).val()=='') {
+                    $(this).val(def_story);
+                }
+            })
+        }
+        $('.mystory.checkbox').click(function(){
+            $('.mystory.checkbox').removeClass('on');
+            $(this).toggleClass('on');
+        });
+    })
+</script>

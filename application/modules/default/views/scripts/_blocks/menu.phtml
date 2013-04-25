@@ -5,9 +5,11 @@
 	<span class="divider">|</span>
 	<a onclick="Common.url('/user/rating')" <?php echo ($this->ratingpage)? 'class="selected"':'';?>>Таблица рейтингов</a>
 	<span class="divider">|</span>
+<?php if ($this->admin) { ?>
+	<a onclick="Common.url('/story/index')" <?php echo ($this->story)? 'class="selected"':'';?>><b>Верю, не верю</b></a>
+	<span class="divider">|</span>
+<?php } ?>
 	<a style="color:red" onclick="Common.url('/intention/tender')" <?php echo ($this->tenderpage)? 'class="selected"':'';?>>Конкурс (Бесплатные голоса)</a>
 
 	<a class="fl_r" onclick="Common.url('/index/authors')" <?php echo ($this->my)? 'class="selected"':'';?>>Авторы</a>
-  <span class="divider fl_r">|</span>
-  <a href="http://vkontakte.ru/club33871234" target="_blank" class="fl_r">Наша группа</a>
 </div>

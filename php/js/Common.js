@@ -619,6 +619,48 @@ var Common = {
           .animate({ backgroundColor: originalBg }, animateMs, null, function () {
               jQuery(this).css("backgroundColor", originalBg);
           });
+  },
+
+  addStory: function(elText, elButton) {
+    var text = $.trim($(elText).val());
+    var believe = $('.mystory.checkbox.on').attr('data-value');
+    var button = $(elButton);
+
+    if (text.length==0) {
+      alert('Напиши историю');
+      return;
+    }
+    if (believe!='believe' && believe!='not_believe') {
+      alert('Отметь Правда или Ложь');
+      return;
+    }
+
+    button.hide();
+    button.parent().find('img').show();
+    $.post('/story/add', {story:text, value:believe}, function(response){
+      if (response.success==true) {
+        document.location.reload();
+      } else {
+        alert(response.error);
+      }
+      button.parent().find('img').hide();
+      button.show();
+    },'json');
+  },
+
+  vote: function(story_id, el) {
+    var value = $(el).attr('data-value');
+    var prnt = $(el).parent().parent();
+    prnt.html('');
+    $.post('/story/vote', {id: story_id, value:value},function(response){
+      if (response.success==true) {
+        var data = response.data;
+        var result = '<div class="fl_l news_header value">' +
+          '<span class="value">'+Feed.values[data.value]+'</span></div>'+
+          '<p><span class="news_header">Верят: '+data.believe_count+'</span><br/>'+'<span class="news_header">Не верят: '+data.not_believe_count+'</span>';
+        prnt.html(result);
+      }
+    },'json');
   }
 
 }

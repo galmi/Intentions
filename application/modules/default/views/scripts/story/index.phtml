@@ -1,0 +1,40 @@
+<?php echo $this->partial('_blocks/menu.phtml', array('story'=>1));?>
+<div class="clear_fix"></div>
+<div id="main">
+
+    <?php echo $this->partial('_blocks/add.phtml');?>
+
+    <div id="main">
+        <div class="summary_wrap clear_fix news_top">
+            <div class="module_header">
+                Истории
+            </div>
+            <div class="clear_fix"></div>
+            <div id="my" class="mt8">
+                <div id="sub_menu" class="fl_r">
+                    <a data-filter="all" class="selected">Все истории</a>
+                    <span class="divider">|</span>
+                    <a data-filter="new">Новые истории</a>
+                    <span class="divider">|</span>
+                    <a data-filter="my">Мои истории</a>
+                </div>
+            </div>
+                <div class="clear_fix"></div>
+        </div>
+        <div id="news">
+
+        </div>
+        <div id="show_more">
+            <a>Еще</a>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" async>
+    VK.init(function (data) {
+        Common.initObserver();
+        FeedBelieve.init('<?php echo $this->server_name;?>', <?= $this->admin?1:0; ?>);
+    });
+
+</script>
