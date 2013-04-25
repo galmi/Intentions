@@ -647,3 +647,7 @@ padding-left: 70px;
     left:0;
     top:0
 }
+#mystory input {
+    width: 460px;
+    margin-top: 2px;
+}

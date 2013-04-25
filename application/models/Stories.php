@@ -1,5 +1,5 @@
 <?php
-class Model_Stories extends Model_Base
+class Model_Stories extends App_Model_Base
 {
     protected static $_collection = 'stories';
 
