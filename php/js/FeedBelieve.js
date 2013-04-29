@@ -46,14 +46,14 @@ var FeedBelieve = {
                     if (html) {
                         $("#news").append(html);
                         FeedBelieve.page++;
+                        if (FeedBelieve.page==1) {
+                          $("#news").append(FeedBelieve.addFotostrana());
+                        }
                     }
                     $("#show_more").children('a').removeClass('loading');
                 });
             } else {
                 $("#show_more").hide();
-            }
-            if (FeedBelieve.page==1) {
-              FeedBelieve.addFotostrana();
             }
         }, 'json');
 
@@ -146,7 +146,7 @@ var FeedBelieve = {
         ' </div>' +
         ' <div style="clear:both"></div>' +
         '</div>';
-      $(block).insertAfter(".news_block:first-child");
-      console.log($(".news_block:first-child"));
+      return block;
+//      $(block).insertAfter(".news_block:first-child");
     }
 }
