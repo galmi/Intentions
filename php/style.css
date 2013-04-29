@@ -124,6 +124,7 @@ td {
   text-shadow: 0 1px 0 #45688E;
   background: url(images/button_vk.png) #6181A6 repeat-x top;
   background-position: 0px -16px;
+  display:block;
 }
 
 .mt8{
