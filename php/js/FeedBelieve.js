@@ -52,7 +52,9 @@ var FeedBelieve = {
             } else {
                 $("#show_more").hide();
             }
-            FeedBelieve.addFotostrana();
+            if (FeedBelieve.page==1) {
+              FeedBelieve.addFotostrana();
+            }
         }, 'json');
 
         $("#sub_menu a").click(function(){
@@ -145,5 +147,6 @@ var FeedBelieve = {
         ' <div style="clear:both"></div>' +
         '</div>';
       $(block).insertAfter(".news_block:first-child");
+      console.log($(".news_block:first-child"));
     }
 }
