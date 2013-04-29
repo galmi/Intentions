@@ -42,13 +42,13 @@ var FeedBelieve = {
                             $.extend(rowData,{nolike:true});
                         }
                         html += FeedBelieve.row(rowData);
+                        if (FeedBelieve.page==1 && key==0) {
+                          html += FeedBelieve.addFotostrana();
+                        }
                     });
                     if (html) {
                         $("#news").append(html);
                         FeedBelieve.page++;
-                        if (FeedBelieve.page==1) {
-                          $("#news").append(FeedBelieve.addFotostrana());
-                        }
                     }
                     $("#show_more").children('a').removeClass('loading');
                 });
