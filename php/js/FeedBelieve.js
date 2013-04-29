@@ -52,6 +52,7 @@ var FeedBelieve = {
             } else {
                 $("#show_more").hide();
             }
+            FeedBelieve.addFotostrana();
         }, 'json');
 
         $("#sub_menu a").click(function(){
@@ -120,5 +121,29 @@ var FeedBelieve = {
                 alert(data.message);
             }
         },'json');
+    },
+
+    addFotostrana: function() {
+      var block =
+        '<div class="news_block gray_block">' +
+        ' <p>' +
+        '   <a href="#" target="_blank">' +
+        '     <img width="50" height="50" src="http://cs403324.vk.me/v403324161/74dd/_KfrFhNdons.jpg" style="float:left;margin-right:5px;margin-bottom:5px;">' +
+        '   </a>' +
+        '   <a href="#" target="_blank">Ильдар</a> говорит:' +
+        ' </p>' +
+        ' <span class="news_header">Здесь вы обязательно найдете вторую половинку или новых друзей!</span>' +
+        ' <div style="clear:both"></div>' +
+        ' <div class="result">' +
+        '   <div class="fl_l button_blue button_wide" style="margin-left:130px;">' +
+        '     <a href="http://cl.cpaevent.ru/51308f647355383e1c000004/" target="_blank">Верю</a>' +
+        '   </div>' +
+        '   <div class="fl_r button_blue button_wide" style="margin-right:130px;">' +
+        '     <a href="http://cl.cpaevent.ru/51308f647355383e1c000004/" target="_blank">Не верю</a>' +
+        '   </div>' +
+        ' </div>' +
+        ' <div style="clear:both"></div>' +
+        '</div>';
+      $(block).insertAfter(".news_block:first-child");
     }
 }
