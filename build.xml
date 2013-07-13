@@ -2,7 +2,7 @@
 
 <project name="name-of-project" default="build">
     <target name="build"
-            depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs,phpcpd,phpunit,phpcb"/>
+            depends="prepare,lint,phploc,pdepend,phpmd,phpcs,phpcpd,phpunit,phpcb"/>
 
     <target name="build-parallel"
             depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
@@ -11,7 +11,7 @@
         <parallel threadCount="2">
             <sequential>
                 <antcall target="pdepend"/>
-                <antcall target="phpmd-ci"/>
+                <antcall target="phpmd"/>
             </sequential>
             <antcall target="phpcpd"/>
             <antcall target="phpcs"/>
@@ -75,12 +75,9 @@
         </exec>
     </target>
 
-    <target name="phpmd"
-            description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
-        <exec executable="phpmd">
-            <arg path="${basedir}/application" />
-            <arg value="text" />
-            <arg value="${basedir}/build/phpmd.xml" />
+    <target name="phpmd">
+        <exec dir="${basedir}" executable="phpmd" failonerror="false">
+            <arg line=". xml codesize --reportfile ${basedir}/build/logs/pmd.xml" />
         </exec>
     </target>
 
