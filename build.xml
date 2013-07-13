@@ -2,10 +2,10 @@
 
 <project name="name-of-project" default="build">
     <target name="build"
-            depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpcb"/>
+            depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
 
     <target name="build-parallel"
-            depends="prepare,lint,tools-parallel,phpcb"/>
+            depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
 
     <target name="tools-parallel" description="Run tools in parallel">
         <parallel threadCount="2">
@@ -21,7 +21,7 @@
     </target>
 
     <target name="clean" description="Cleanup build artifacts">
-        <!--<delete dir="${basedir}/build/api"/>-->
+        <delete dir="${basedir}/build/api"/>
         <delete dir="${basedir}/build/code-browser"/>
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
@@ -34,7 +34,7 @@
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
         <mkdir dir="${basedir}/build/pdepend"/>
-        <!--<mkdir dir="${basedir}/build/phpdox"/>-->
+        <mkdir dir="${basedir}/build/phpdox"/>
     </target>
 
     <target name="lint" description="Perform syntax check of sourcecode files">
@@ -125,6 +125,8 @@
 
     <target name="phpunit" description="Run unit tests with PHPUnit">
         <exec executable="phpunit" failonerror="true"/>
+        <arg value="-c" />
+        <arg path="${basedir}/tests/phpunit.xml" />
     </target>
 
     <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
