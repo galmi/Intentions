@@ -62,7 +62,7 @@
         <exec executable="phploc">
             <arg value="--log-csv" />
             <arg value="${basedir}/build/logs/phploc.csv" />
-            <arg path="${basedir}/src" />
+            <arg path="${basedir}/application" />
         </exec>
     </target>
 
@@ -71,7 +71,7 @@
             <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
             <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
             <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
-            <arg path="${basedir}/src" />
+            <arg path="${basedir}/application" />
         </exec>
     </target>
 
@@ -123,9 +123,9 @@
         <exec executable="phpdox"/>
     </target>
 
-    <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec executable="phpunit" failonerror="true"/>
-    </target>
+    <!--<target name="phpunit" description="Run unit tests with PHPUnit">-->
+        <!--<exec executable="phpunit" failonerror="true"/>-->
+    <!--</target>-->
 
     <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
         <exec executable="phpcb">
