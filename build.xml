@@ -77,17 +77,7 @@
 
     <target name="phpmd">
         <exec dir="${basedir}" executable="phpmd" failonerror="false">
-            <arg line=". xml codesize --reportfile ${basedir}/build/logs/pmd.xml" />
-        </exec>
-    </target>
-
-    <target name="phpmd-ci" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
-        <exec executable="phpmd">
-            <arg path="${basedir}/application" />
-            <arg value="xml" />
-            <arg value="${basedir}/build/phpmd.xml" />
-            <arg value="--reportfile" />
-            <arg value="${basedir}/build/logs/pmd.xml" />
+            <arg line="${basedir}/application xml codesize --reportfile ${basedir}/build/logs/pmd.xml" />
         </exec>
     </target>
 
@@ -95,15 +85,6 @@
             description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
         <exec dir="${basedir}" executable="phpcs" failonerror="false" output="/dev/null">
             <arg line="--extensions=php --ignore=build/*,tests/*,libs/Zend/*,libs/Shanty/* --standard=Zend --tab-width=4 --report=checkstyle --report-file=${basedir}/build/logs/checkstyle.xml ." />
-        </exec>
-    </target>
-
-    <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
-        <exec executable="phpcs" output="/dev/null">
-            <arg value="--report=checkstyle" />
-            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
-            <arg value="--standard=${basedir}/build/phpcs.xml" />
-            <arg path="${basedir}/application" />
         </exec>
     </target>
 
