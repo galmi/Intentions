@@ -2,7 +2,7 @@
 
 <project name="name-of-project" default="build">
     <target name="build"
-            depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
+            depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs,phpcpd,phpunit,phpcb"/>
 
     <target name="build-parallel"
             depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
@@ -14,7 +14,7 @@
                 <antcall target="phpmd-ci"/>
             </sequential>
             <antcall target="phpcpd"/>
-            <antcall target="phpcs-ci"/>
+            <antcall target="phpcs"/>
             <antcall target="phploc"/>
             <antcall target="phpdox"/>
         </parallel>
@@ -96,10 +96,13 @@
 
     <target name="phpcs"
             description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
-        <exec executable="phpcs">
-            <arg value="--standard=${basedir}/build/phpcs.xml" />
-            <arg path="${basedir}/application" />
+        <exec dir="${basedir}" executable="phpcs" failonerror="false" output="/dev/null">
+            <arg line="--extensions=php --ignore=build/*,tests/* --standard=Zend --tab-width=4 --report=checkstyle --report-file=${basedir}/build/logs/checkstyle.xml ." />
         </exec>
+        <!--<exec executable="phpcs">-->
+            <!--<arg value="--standard=${basedir}/build/phpcs.xml" />-->
+            <!--<arg path="${basedir}/application" />-->
+        <!--</exec>-->
     </target>
 
     <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
