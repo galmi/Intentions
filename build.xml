@@ -99,10 +99,6 @@
         <exec dir="${basedir}" executable="phpcs" failonerror="false" output="/dev/null">
             <arg line="--extensions=php --ignore=build/*,tests/* --standard=Zend --tab-width=4 --report=checkstyle --report-file=${basedir}/build/logs/checkstyle.xml ." />
         </exec>
-        <!--<exec executable="phpcs">-->
-            <!--<arg value="--standard=${basedir}/build/phpcs.xml" />-->
-            <!--<arg path="${basedir}/application" />-->
-        <!--</exec>-->
     </target>
 
     <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
